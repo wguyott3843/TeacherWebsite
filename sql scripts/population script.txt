@@ -1,0 +1,95 @@
+
+
+# add test person data
+
+USE TeacherWebsite;
+
+INSERT INTO Person (FirstName,LastName,Email,Login,Password,CreateDate,DeleteDate)
+	VALUES ('TeacherFirstName1','TeacherLastName1','Teacher1@yahoo.com','Teacher1','Teacher1Pword','2017-02-17',NULL);
+INSERT INTO Person (FirstName,LastName,Email,Login,Password,CreateDate,DeleteDate)
+	VALUES ('TeacherFirstName2','TeacherLastName2','Teacher2@yahoo.com','Teacher2','Teacher2Pword','2017-02-17',NULL);
+INSERT INTO Person (FirstName,LastName,Email,Login,Password,CreateDate,DeleteDate)
+	VALUES ('StudentFirstName1','StudentLastName1','Student1@yahoo.com','Student1','Student1Pword','2017-02-18',NULL);
+INSERT INTO Person (FirstName,LastName,Email,Login,Password,CreateDate,DeleteDate)
+	VALUES ('StudentFirstName2','StudentLastName2','Student2@yahoo.com','Student2','Student2Pword','2017-02-18',NULL);
+INSERT INTO Person (FirstName,LastName,Email,Login,Password,CreateDate,DeleteDate)
+	VALUES ('StudentFirstName3','StudentLastName3','Student3@yahoo.com','Student3','Student3Pword','2017-02-18',NULL);
+INSERT INTO Person (FirstName,LastName,Email,Login,Password,CreateDate,DeleteDate)
+	VALUES ('StudentFirstName4','StudentLastName4','Student4@yahoo.com','Student4','Student4Pword','2017-02-18',NULL);
+
+#add test teacher data
+
+USE TeacherWebsite;
+
+INSERT INTO Teacher (PersonId)
+	SELECT Id FROM Person WHERE LastName = 'TeacherLastName1';
+INSERT INTO Teacher (PersonId)
+	SELECT Id FROM Person WHERE LastName = 'TeacherLastName2';
+
+#add test class data
+
+USE TeacherWebsite;
+
+INSERT INTO Class (Number, Name, Description, CreateDate, DeleteDate)
+	VALUES ('101', 'Intro to Computing', 'A basic course on how to code in Java.', '2017-02-17',NULL);
+INSERT INTO Class (Number, Name, Description, CreateDate, DeleteDate)
+	VALUES ('102', 'Web Programming', 'A course on how to build a website.', '2017-02-17',NULL);
+INSERT INTO Class (Number, Name, Description, CreateDate, DeleteDate)
+	VALUES ('201', 'Database Management', 'An advanced course on how to make a database using mysql.', '2017-02-17',NULL);
+INSERT INTO Class (Number, Name, Description, CreateDate, DeleteDate)
+	VALUES ('202', 'Computing I', 'An introduction to the basics of programming computers.', '2017-02-17',NULL);
+
+#add test student data
+
+USE TeacherWebsite;
+
+INSERT INTO Student (PersonId)
+	SELECT Id FROM Person WHERE LastName = 'StudentLastName1';
+INSERT INTO Student (PersonId)
+	SELECT Id FROM Person WHERE LastName = 'StudentLastName2';
+INSERT INTO Student (PersonId)
+	SELECT Id FROM Person WHERE LastName = 'StudentLastName3';
+INSERT INTO Student (PersonId)
+	SELECT Id FROM Person WHERE LastName = 'StudentLastName4';
+
+# add test homework data 
+
+USE TeacherWebsite;
+
+INSERT INTO Homework(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
+	SELECT Id,'Make a for loop.', '2017-06-22', '2017-02-18', NULL FROM Class WHERE Number = '101';
+INSERT INTO Homework(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
+	SELECT Id,'Make the homepage for a website of a company that sells cars.', '2017-06-25', '2017-02-18', NULL FROM Class WHERE Number = '102';
+INSERT INTO Homework(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
+	SELECT Id, 'Write the sql to create 3 separate tables with atleast 5 items in each.', '2017-06-30', '2017-02-18', NULL FROM Class WHERE Number = '201';
+INSERT INTO Homework(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
+	SELECT Id, 'Add primary keys to the tables you created in the last assignment', '2017-07-05', '2017-02-18', NULL FROM Class WHERE Number = '201';
+
+
+# add test announcements data
+
+USE TeacherWebsite;
+
+INSERT INTO Announcement(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
+	SELECT Id,'Your first homework is due on the 22nd.', '2017-06-22', '2017-02-18', NULL FROM Class WHERE Number = '101';
+INSERT INTO Announcement(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
+	SELECT Id,'Your first homework assignment is due on the 25th.','2017-06-25', '2017-02-18', NULL FROM Class WHERE Number = '102';
+INSERT INTO Announcement(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
+	SELECT Id,'Your first homework assignment is due on the 30th.', '2017-06-30', '2017-02-18', NULL FROM Class WHERE Number = '102';
+# this is a general announcement so we left ClassId as NULL
+INSERT INTO Announcement(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
+	VALUES (NULL,'Please check your classes to be sure of your homework due dates.', '2017-06-30','2017-02-18', NULL);
+
+
+# add test teacherclassmap data
+
+USE TeacherWebsite;
+
+INSERT INTO TeacherClassMap (TeacherId, ClassId, CreateDate, DeleteDate)
+	SELECT Id, (SELECT Id FROM Class WHERE Number = '101'),'2017-02-18', NULL FROM Teacher WHERE PersonId = (SELECT Id FROM Person WHERE LastName = 'TeacherLastName1');
+INSERT INTO TeacherClassMap (TeacherId, ClassId, CreateDate, DeleteDate)
+	SELECT Id, (SELECT Id FROM Class WHERE Number = '102'),'2017-02-18', NULL FROM Teacher WHERE PersonId = (SELECT Id FROM Person WHERE LastName = 'TeacherLastName2');
+INSERT INTO TeacherClassMap (TeacherId, ClassId, CreateDate, DeleteDate)
+	SELECT Id, (SELECT Id FROM Class WHERE Number = '201'),'2017-02-18', NULL FROM Teacher WHERE PersonId = (SELECT Id FROM Person WHERE LastName = 'TeacherLastName1');
+INSERT INTO TeacherClassMap (TeacherId, ClassId, CreateDate, DeleteDate)
+	SELECT Id, (SELECT Id FROM Class WHERE Number = '202'),'2017-02-18', NULL FROM Teacher WHERE PersonId = (SELECT Id FROM Person WHERE LastName = 'TeacherLastName2');

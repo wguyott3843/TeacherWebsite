@@ -1,0 +1,24 @@
+# delete the last table i created first and the first table i created last
+# basically delete the tables in the opposite order you created them
+
+USE TeacherWebsite;
+DROP TABLE TeacherClassMap;
+
+USE TeacherWebsite;
+DROP TABLE Announcement;
+
+USE TeacherWebsite;
+DROP TABLE Homework;
+
+USE TeacherWebsite;
+DROP TABLE Student;
+
+USE TeacherWebsite;
+DROP TABLE Class;
+
+USE TeacherWebsite;
+DROP TABLE Teacher;
+
+USE TeacherWebsite;
+DROP TABLE Person;
+

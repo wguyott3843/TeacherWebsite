@@ -1,0 +1,4 @@
+# utf8mb4 is a more complete implementation of utf8
+CREATE DATABASE TeacherWebsite
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;

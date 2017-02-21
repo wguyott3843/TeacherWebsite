@@ -1,0 +1,125 @@
+# create the User table
+
+USE TeacherWebsite;
+
+CREATE TABLE Person (
+	Id INT NOT NULL AUTO_INCREMENT,
+	FirstName VARCHAR(20) NOT NULL, 
+	LastName VARCHAR(30) NOT NULL,
+	Email VARCHAR(60) NOT NULL,
+	Login VARCHAR(25) NOT NULL,
+	Password VARCHAR(25) NOT NULL,
+	CreateDate DATE NOT NULL,
+	DeleteDate DATE NULL,
+	PRIMARY KEY (Id)
+);
+
+
+# create the Teacher table
+
+USE TeacherWebsite;
+
+CREATE TABLE Teacher (
+	Id INT NOT NULL AUTO_INCREMENT,
+	PersonId INT NOT NULL,
+	PRIMARY KEY (Id),
+	CONSTRAINT fk_teacher_person_id
+		FOREIGN KEY (PersonId)
+		REFERENCES Person (Id)
+		ON DELETE RESTRICT
+		ON UPDATE RESTRICT
+);
+
+
+# create the Class table
+
+USE TeacherWebsite;
+
+CREATE TABLE Class(
+	Id INT NOT NULL AUTO_INCREMENT,
+	Number INT NOT NULL,
+	Name VARCHAR(40) NOT NULL,
+	Description VARCHAR(500) NOT NULL,
+	CreateDate DATE NOT NULL,
+	DeleteDate DATE NULL,
+	PRIMARY KEY (Id)
+);
+
+
+# create the Student table
+
+USE TeacherWebsite;
+
+CREATE TABLE Student  (
+	Id INT NOT NULL AUTO_INCREMENT,
+	PersonId INT NOT NULL,
+	PRIMARY KEY (Id),
+	CONSTRAINT fk_student_person_id
+		FOREIGN KEY (PersonId)
+		REFERENCES Person (Id)
+		ON DELETE RESTRICT
+		ON UPDATE RESTRICT
+);
+
+
+# create the Homework table
+
+USE TeacherWebsite;
+
+CREATE TABLE Homework(
+	Id INT NOT NULL AUTO_INCREMENT,
+	ClassId INT NOT NULL,
+	Text VARCHAR(50) NOT NULL,
+	ExpirationDate DATE NOT NULL,
+	CreateDate DATE NOT NULL,
+	DeleteDate DATE NULL,
+	PRIMARY KEY (Id),
+	CONSTRAINT fk_homework_class_id
+		FOREIGN KEY (ClassId)
+		REFERENCES Class (Id)
+		ON DELETE RESTRICT
+		ON UPDATE RESTRICT
+);
+
+
+# create the Announcement table
+
+USE TeacherWebsite;
+
+CREATE TABLE Announcement(
+	Id INT NOT NULL AUTO_INCREMENT,
+	ClassId INT NULL,
+	Text VARCHAR(50) NOT NULL,
+	ExpirationDate DATE NOT NULL,
+	CreateDate DATE NOT NULL,
+	DeleteDate DATE NULL,
+	PRIMARY KEY (Id),
+	CONSTRAINT fk_announcement_class_id
+		FOREIGN KEY (ClassId)
+		REFERENCES Class (Id)
+		ON DELETE RESTRICT
+		ON UPDATE RESTRICT
+);
+
+
+# create the TeacherClassMap table
+
+USE TeacherWebsite;
+
+CREATE TABLE TeacherClassMap(
+	TeacherId INT NOT NULL,
+	ClassId INT NOT NULL,
+	CreateDate DATE NOT NULL,
+	DeleteDate DATE NULL,
+	CONSTRAINT fk_teacherclassmap_teacher_id
+		FOREIGN KEY (TeacherId)
+		REFERENCES Teacher (Id)
+		ON DELETE RESTRICT
+		ON UPDATE RESTRICT,
+	CONSTRAINT fk_teacherclassmap_class_id
+		FOREIGN KEY (ClassId)
+		REFERENCES Class (Id)
+		ON DELETE RESTRICT
+		ON UPDATE RESTRICT
+);
+	 
