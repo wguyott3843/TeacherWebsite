@@ -26,3 +26,17 @@ git status
 -- stage files that have been added or changed --
 git add .
 git commit
+
+// pushing changes to the remote repository
+git push --set-upstream origin currentWork
+
+------
+
+// pulling latest changes from master
+
+git checkout master
+git pull .
+
+// do this if there are no changes from the remote master
+git checkout currentWork
+
