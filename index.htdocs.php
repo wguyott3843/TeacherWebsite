@@ -5,7 +5,7 @@
 		$uri = 'http://';
 	}
 	$uri .= $_SERVER['HTTP_HOST'];
-	header('Location: '.$uri.'/teacherWebsite/login.php');
+	header('Location: '.$uri.'/teacherWebsite');
 	exit;
 ?>
-Something is wrong with website setup :-(
+Something is wrong with the htdocs website setup :-(
