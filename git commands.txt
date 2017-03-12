@@ -1,0 +1,42 @@
+// Configuring Git Bash
+
+// Open a Git Bash shell and enter the following (adjust them to use your logon information):
+git config --global user.name "wguyott3843"
+git config --global user.email "wguyott0785@westfield.ma.edu"
+git config --global core.editor notepad
+
+------
+
+// creating and pulling a branch.
+
+/c/xampp/htdocs
+git clone https://github.com/wguyott3843/TeacherWebsite.git
+
+create branch: git branch *branchnamehere* (branch name is "currentWork")
+
+move to branch: git checkout *branchnamehere*
+
+------
+
+-- checking in changes --
+
+-- show modifications, additions and deletions. --
+git status 
+
+-- stage files that have been added or changed --
+git add .
+git commit
+
+// pushing changes to the remote repository
+git push --set-upstream origin currentWork
+
+------
+
+// pulling latest changes from master
+
+git checkout master
+git pull .
+
+// do this if there are no changes from the remote master
+git checkout currentWork
+

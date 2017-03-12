@@ -1,6 +1,3 @@
-<!-- link href=”bootstrap/css/bootstrap.min.css” rel=”stylesheet” type=”text/css” / -->
-<!-- script type=”text/javascript” src=”bootstrap/js/bootstrap.min.js”></script -->
-
 <?php
    include("config.php");
    session_start();
@@ -8,8 +5,8 @@
    $error = '';
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
+	   
       // username and password sent from form 
-      
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
       
@@ -45,17 +42,8 @@
 			 $_SESSION['first_name'] = $firstname;			 
 			 $_SESSION['last_name'] = $lastname;			 
 			 $_SESSION['email'] = $email;
-         
 		 
-			 // redirect to a different page in the current directory
-			 //$host  = $_SERVER['HTTP_HOST'];
-			 //$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-			 //$extra = 'welcome.php';
-			 //header("Location: http://$host$uri/$extra");
-		 
-		 
-		 
-			 header("location: welcome.php");
+			 header("location: welcomeTeacher.php");
 		 }
 		 else{
 			 // need to check if this is a student
@@ -77,7 +65,7 @@
 				 $_SESSION['last_name'] = $lastname;				 
 				 $_SESSION['email'] = $email;
 			 
-				 header("location: welcome.php");
+				 header("location: welcomeStudent.php");
 			 }
 			 else{
 				 // its neither
@@ -90,51 +78,46 @@
    }
 ?>
 
-<html>
-   
-   <head>
-      <title>Login Page</title>
-      
-      <style type = "text/css">
-         body {
-            font-family:Arial, Helvetica, sans-serif;
-            font-size:14px;
-         }
-         
-         label {
-            font-weight:bold;
-            width:100px;
-            font-size:14px;
-         }
-         
-         .box {
-            border:#666666 solid 1px;
-         }
-      </style>
-      
-   </head>
-   
-   <body bgcolor = "#FFFFFF">
+<html lang = "en">
+  <head>
+    <meta charset = "utf-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name = "description" content = "Teacher Website Login Page">
+    <meta name = "author" content = "William Guyott">
+	<link rel = "icon" href = "images/Apple.ico">
 	
-      <div align = "center">
-         <div style = "width:300px; border: solid 1px #333333; " align = "left">
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
-				
-            <div style = "margin:30px">
-               
-               <form action = "" method = "post">
-                  <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-                  <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
-                  <input type = "submit" value = " Submit "/><br />
-               </form>
-               
-               <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
-					
-            </div>
-				
-         </div>
-			
-      </div>
+    <title>Teacher Website Login Page</title>
+	
+	<!-- Bootstrap core CSS -->
+    <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet">
+	
+	<!-- Custom styles for this template -->
+    <link href = "css/signin.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div class = "container">
 
-   </body>
+      <form class = "form-signin" method = "post">
+        <h2 class = "form-signin-heading">Please Login</h2>
+        <label for = "username" class = "sr-only">Username</label>
+        <input type = "text" id = "username" name = "username" class = "form-control" placeholder = "Username" required autofocus>
+        <label for = "password" class = "sr-only">Password</label>
+        <input type = "password" id = "password" name = "password" class = "form-control" placeholder = "Password" required>
+        <!-- <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div> -->
+        <button class = "btn btn-lg btn-primary btn-block" type = "submit">Login</button>
+      </form>
+
+    </div> <!-- /container -->
+	
+	<!-- Put all javascript at the end of the body so the UI elements get rendered first.
+		 This makes the webpage seem more responsive to the user. -->
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src = "bootstrap/js/bootstrap.min.js"></script>
+  </body>
 </html>
