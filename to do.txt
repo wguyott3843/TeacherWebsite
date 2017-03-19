@@ -1,0 +1,30 @@
+1. ask professor boughosn how to put the selected class into session state using javascript? 
+
+in manageClass.php line 57 in the onchange event im passing the classId as part of the url. 
+
+is there a way to set ClassId in the session state using javascript so that i can access it from the $_session array
+from php when i move to the next page.
+
+2. implement manageHomework.php page like manageClass.php page getting the ClassId from session state.
+
+Uses classHomeworks.php
+
+3. implement manageClassAnnouncement.php page like manageClass.php page getting the ClassId from session state.
+
+Uses classAnouncements.php
+
+
+-----
+
+1. clean up welcome teacher and welcome student pages.
+
+2. implement profile page, announcement page, students page just like classes page.
+
+3. implement student profile and student classes.
+
+need to figure out how to do read only pages. 
+
+4. implement add delete and update functionality.
+
+need to figure out how to pass the class information from the manage class page to each of these pages.
+have to pass ClassNumber ClassName ClassDescription and ClassId, ideally we will do this in session state.

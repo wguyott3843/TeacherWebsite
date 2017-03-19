@@ -53,6 +53,7 @@ USE TeacherWebsite;
 CREATE TABLE Student  (
 	Id INT NOT NULL AUTO_INCREMENT,
 	PersonId INT NOT NULL,
+	GradeLevel INT NOT NULL,
 	PRIMARY KEY (Id),
 	CONSTRAINT fk_student_person_id
 		FOREIGN KEY (PersonId)
@@ -143,4 +144,3 @@ CREATE TABLE StudentClassMap(
 		ON DELETE RESTRICT
 		ON UPDATE RESTRICT
 );
-	 

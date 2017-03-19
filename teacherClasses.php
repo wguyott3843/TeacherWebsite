@@ -42,9 +42,7 @@
 		<div style = "float:right">
 		<h3>Manage:</h3>
 			<ul style = "list-style-type: none">
-				<li><a class = "btn" href = "editClass.php" type = "button">edit</a></li>
-				<li><a class = "btn" href = "deleteClass.php" type = "button">delete</a></li>
-				<li><a class = "btn" href = "addClass.php" type = "button">add</a></li>
+				<li><a class = "btn" href = "manageClass.php" type = "button">modify</a></li>
 				<li><a class = "btn" href = "welcomeTeacher.php" type = "button">cancel</a></li>
 				<li><a class = "btn" href = "logout.php" type = "button">logout</a></li>
 			</ul>
