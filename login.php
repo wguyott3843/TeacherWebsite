@@ -42,6 +42,7 @@
 			 $_SESSION['first_name'] = $firstname;			 
 			 $_SESSION['last_name'] = $lastname;			 
 			 $_SESSION['email'] = $email;
+			 $_SESSION['person_id'] = $personid;
 		 
 			 header("location: welcomeTeacher.php");
 		 }
@@ -64,6 +65,7 @@
 				 $_SESSION['first_name'] = $firstname;			 
 				 $_SESSION['last_name'] = $lastname;				 
 				 $_SESSION['email'] = $email;
+				 $_SESSION['person_id'] = $personid;
 			 
 				 header("location: welcomeStudent.php");
 			 }
@@ -88,7 +90,7 @@
     <meta name = "author" content = "William Guyott">
 	<link rel = "icon" href = "images/Apple.ico">
 	
-    <title>Teacher Website Login Page</title>
+    <title>Login</title>
 	
 	<!-- Bootstrap core CSS -->
     <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet">
