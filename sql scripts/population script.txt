@@ -43,14 +43,14 @@ INSERT INTO Class (Number, Name, Description, CreateDate, DeleteDate)
 
 USE TeacherWebsite;
 
-INSERT INTO Student (PersonId)
-	SELECT Id FROM Person WHERE LastName = 'StudentLastName1';
-INSERT INTO Student (PersonId)
-	SELECT Id FROM Person WHERE LastName = 'StudentLastName2';
-INSERT INTO Student (PersonId)
-	SELECT Id FROM Person WHERE LastName = 'StudentLastName3';
-INSERT INTO Student (PersonId)
-	SELECT Id FROM Person WHERE LastName = 'StudentLastName4';
+INSERT INTO Student (PersonId, GradeLevel)
+	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName1'), 5;
+INSERT INTO Student (PersonId, GradeLevel)
+	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName2'), 6;
+INSERT INTO Student (PersonId, GradeLevel)
+	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName3'), 7;
+INSERT INTO Student (PersonId, GradeLevel)
+	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName4'), 8;
 
 # add test homework data 
 
@@ -112,4 +112,3 @@ INSERT INTO StudentClassMap (StudentId, ClassId, CreateDate, DeleteDate)
 	SELECT Id, (SELECT Id FROM Class WHERE Number = '201'),'2017-02-18', NULL FROM Student WHERE PersonId = (SELECT Id FROM Person WHERE LastName = 'StudentLastName1');
 INSERT INTO StudentClassMap (StudentId, ClassId, CreateDate, DeleteDate)
 	SELECT Id, (SELECT Id FROM Class WHERE Number = '202'),'2017-02-18', NULL FROM Student WHERE PersonId = (SELECT Id FROM Person WHERE LastName = 'StudentLastName2');
-
