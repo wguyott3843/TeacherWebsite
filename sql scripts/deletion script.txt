@@ -2,6 +2,9 @@
 # basically delete the tables in the opposite order you created them
 
 USE TeacherWebsite;
+DROP TABLE StudentClassMap;
+
+USE TeacherWebsite;
 DROP TABLE TeacherClassMap;
 
 USE TeacherWebsite;

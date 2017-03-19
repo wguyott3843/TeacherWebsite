@@ -1,19 +1,6 @@
 <?php
-	include('session.php');
-
-	$data = array();
-	try
-	{
-		$sql = "SELECT Text FROM Announcement WHERE ClassId IS NULL AND ExpirationDate >= CURDATE() ORDER BY CreateDate DESC";
-		$result = mysqli_query($db, $sql);
-		while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-		{
-			$data[] = $row;
-		}
-	}catch(Exception $e)
-	{
-		 die("Database Error: " . $e->getMessage());
-	}
+    include('session.php');
+	include('classes.php');
 ?>
 
 <html lang = "en">
@@ -26,7 +13,7 @@
     <meta name = "author" content = "William Guyott">
 	<link rel = "icon" href = "images/Apple.ico">
 	
-    <title>Welcome</title>
+    <title>Teacher Classes</title>
 	
 	<!-- Bootstrap core CSS -->
     <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet">
@@ -37,14 +24,15 @@
   <body>
     <div class = "container">
 	
-		<div>
-			<h2>Current Announcements for  <?php echo $_SESSION['first_name']; ?></h2>
+	<div>
+			<h2>Assigned Classes</h2>
 			<div style = "overflow: scroll; height: 500px;">
 				<table class = "table table-striped table-bordered">
 					<tbody>
-						 <?php foreach($data as $row): ?>
+						 <?php foreach($classes as $row): ?>
 							 <tr>
-								 <td><?php echo $row['Text']; ?></td>
+								 <td><?php echo $row['Number']; ?></td>
+								 <td><?php echo $row['Name']; ?></td>
 							 </tr>
 						 <?php endforeach;?>
 					</tbody>
@@ -54,14 +42,17 @@
 		<div style = "float:right">
 		<h3>Manage:</h3>
 			<ul style = "list-style-type: none">
-				<li><a class = "btn" type = "button" href = "profile.php">profile</a></li>
-				<li><a class = "btn" type = "button" href = "studentClasses.php">classes</a></li>
-				<li><a class = "btn" type = "button" href = "logout.php">logout</a></li>
+				<li><a class = "btn" href = "editClass.php" type = "button">edit</a></li>
+				<li><a class = "btn" href = "deleteClass.php" type = "button">delete</a></li>
+				<li><a class = "btn" href = "addClass.php" type = "button">add</a></li>
+				<li><a class = "btn" href = "welcomeTeacher.php" type = "button">cancel</a></li>
+				<li><a class = "btn" href = "logout.php" type = "button">logout</a></li>
 			</ul>
 		</div>
 		<div style = "float:left">
 			<p> Note: Under "classes" we have "homework" and "anouncements"</p>
 		</div>
+
     </div> <!-- /container -->
 	
 	<!-- Put all javascript at the end of the body so the UI elements get rendered first.

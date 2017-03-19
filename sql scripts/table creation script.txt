@@ -89,7 +89,7 @@ USE TeacherWebsite;
 CREATE TABLE Announcement(
 	Id INT NOT NULL AUTO_INCREMENT,
 	ClassId INT NULL,
-	Text VARCHAR(50) NOT NULL,
+	Text VARCHAR(500) NOT NULL,
 	ExpirationDate DATE NOT NULL,
 	CreateDate DATE NOT NULL,
 	DeleteDate DATE NULL,
@@ -117,6 +117,27 @@ CREATE TABLE TeacherClassMap(
 		ON DELETE RESTRICT
 		ON UPDATE RESTRICT,
 	CONSTRAINT fk_teacherclassmap_class_id
+		FOREIGN KEY (ClassId)
+		REFERENCES Class (Id)
+		ON DELETE RESTRICT
+		ON UPDATE RESTRICT
+);
+
+# create the StudentClassMap table
+
+USE TeacherWebsite;
+
+CREATE TABLE StudentClassMap(
+	StudentId INT NOT NULL,
+	ClassId INT NOT NULL,
+	CreateDate DATE NOT NULL,
+	DeleteDate DATE NULL,
+	CONSTRAINT fk_studentclassmap_student_id
+		FOREIGN KEY (StudentId)
+		REFERENCES Student (Id)
+		ON DELETE RESTRICT
+		ON UPDATE RESTRICT,
+	CONSTRAINT fk_studentclassmap_class_id
 		FOREIGN KEY (ClassId)
 		REFERENCES Class (Id)
 		ON DELETE RESTRICT
