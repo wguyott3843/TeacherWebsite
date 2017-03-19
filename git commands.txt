@@ -7,23 +7,25 @@ git config --global core.editor notepad
 
 ------
 
-// creating and pulling a branch.
-
-/c/xampp/htdocs
+// Pull Repository
+cd /c/xampp/htdocs/
 git clone https://github.com/wguyott3843/TeacherWebsite.git
 
-create branch: git branch *branchnamehere* (branch name is "currentWork")
+// Create Branch
+cd TeacherWebsite
+git branch currentWork
 
-move to branch: git checkout *branchnamehere*
+// Switch to Branch
+git checkout currentWork
 
 ------
 
--- checking in changes --
+// checking in changes --
 
--- show modifications, additions and deletions. --
+// show modifications, additions and deletions. --
 git status 
 
--- stage files that have been added or changed --
+// stage files that have been added or changed --
 git add .
 git commit
 
