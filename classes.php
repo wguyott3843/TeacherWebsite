@@ -38,6 +38,6 @@
 		}
    }
    else{
-	   header("location:login.php");
+	   header("location:logout.php");
    }
 ?>
