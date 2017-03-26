@@ -42,7 +42,8 @@ CREATE TABLE Class(
 	Description VARCHAR(500) NOT NULL,
 	CreateDate DATE NOT NULL,
 	DeleteDate DATE NULL,
-	PRIMARY KEY (Id)
+	PRIMARY KEY (Id),
+	UNIQUE (Number)
 );
 
 
