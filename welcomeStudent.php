@@ -1,5 +1,5 @@
 <?php
-	include('session.php');
+	include('database php/session.php');
 
 	$data = array();
 	try
@@ -54,7 +54,7 @@
 		<div style = "float:right">
 		<h3>Manage:</h3>
 			<ul style = "list-style-type: none">
-				<li><a class = "btn" type = "button" href = "profile.php">profile</a></li>
+				<li><a class = "btn" type = "button" href = "studentProfile.php">profile</a></li>
 				<li><a class = "btn" type = "button" href = "studentClasses.php">classes</a></li>
 				<li><a class = "btn" type = "button" href = "logout.php">logout</a></li>
 			</ul>

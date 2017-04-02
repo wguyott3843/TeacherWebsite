@@ -1,38 +1,6 @@
 <?php
    include('database php/session.php');
-   
-   if($_SESSION['class_number'] == ""){
-	   $error = "you must specify a class number";
-   }
-   elseif($_SESSION['class_name'] == ""){
-	   $error = "you must specify a class name.";
-   }
-   elseif($_SESSION['class_description'] == ""){
-	   $error = "you must specify a class description";
-   }
-   else{
-		$classId = $_SESSION['class_id'];
-		$teacherId = $_SESSION['teacher_id'];
-		
-		try
-		{
-			$sql = "UPDATE Class SET DeleteDate = CURDATE() WHERE Id = '$classId'";
-			mysqli_query($db,$sql);
-			
-			$sql = "UPDATE TeacherClassMap SET DeleteDate = CURDATE() WHERE TeacherId = '$teacherId' AND ClassId = '$classId'";
-			mysqli_query($db,$sql);
-			
-			unset($_SESSION['class_id']);
-			
-			header("location: manageClass.php");
-		}
-		catch(Exception $e)
-		{
-			die("Database Error: " . $e->getMessage());
-		}
-		
-		header("location: manageClass.php");
-   }
+   include('database php/classes.php');
 ?>
 
 <html lang = "en">
@@ -45,7 +13,7 @@
     <meta name = "author" content = "William Guyott">
 	<link rel = "icon" href = "images/Apple.ico">
 	
-    <title>Delete Class</title>
+    <title>Classes</title>
 	
 	<!-- Bootstrap core CSS -->
     <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet">
@@ -55,8 +23,33 @@
   </head>
   <body>
     <div class = "container">
-		<h1>Error: <?php echo $error ?></h1>
-		<a class = "btn" href = "manageClass.php" type = "button">continue</a>
+		<div>
+			<h2>Assigned Classes</h2>
+			<div style = "overflow: scroll; height: 500px;">
+				<table class = "table table-striped table-bordered">
+					<tbody>
+						 <?php foreach($classes as $row): ?>
+							 <tr>
+								 <td><?php echo $row['Number']; ?></td>
+								 <td><?php echo $row['Name']; ?></td>
+							 </tr>
+						 <?php endforeach;?>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div style = "float:right">
+		<h3>Manage:</h3>
+			<ul style = "list-style-type: none">
+				<li><a class = "btn" href = "studentHomework.php" type = "button">homework</a></li>
+				<li><a class = "btn" href = "studentClassAnnouncements.php" type = "button">announcements</a></li>
+				<li><a class = "btn" href = "welcomeStudent.php" type = "button">cancel</a></li>
+				<li><a class = "btn" href = "logout.php" type = "button">logout</a></li>
+			</ul>
+		</div>
+		<div style = "float:left">
+			<p> Note: why is there a note here woofwoof?</p>
+		</div>
     </div> <!-- /container -->
 	
 	<!-- Put all javascript at the end of the body so the UI elements get rendered first.

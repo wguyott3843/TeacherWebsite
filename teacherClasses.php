@@ -1,6 +1,6 @@
 <?php
-    include('session.php');
-	include('classes.php');
+    include('database php/session.php');
+	include('database php/classes.php');
 ?>
 
 <html lang = "en">

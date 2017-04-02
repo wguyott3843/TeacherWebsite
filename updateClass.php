@@ -1,5 +1,5 @@
 <?php
-   include('session.php');
+   include('database php/session.php');
    
    if($_SESSION['class_number'] == ""){
 	   $error = "you must specify a class number";
