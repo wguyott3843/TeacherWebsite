@@ -24,7 +24,7 @@
   <body>
     <div class = "container">
 	
-	<div>
+		<div>
 			<h2>Assigned Classes</h2>
 			<div style = "overflow: scroll; height: 500px;">
 				<table class = "table table-striped table-bordered">

@@ -22,3 +22,14 @@ uses classAnnouncements.php
 2. implement profile page, announcement page, students page just like classes page.
 
 3. implement student profile and student classes.
+
+4. student and teacher profile need back buttons.
+
+5. update the logout.php page to display an error if one is set in session state. change our error calls to logout.php to set an error message in session.
+
+6. add a due date to the homework table.  Update studentHomework.php to display the due date.  Also update the teacherHomework.php page with due date.
+   In the meantime the teacher can include the due date in the text associated with the homework.  Also add names to the homework table.
+
+7. things to document: 
+
+	if there are two logins from the same browser instance they end up sharing session state. This probably could be fixed by assigning names to each session when we create them.  This needs further investigation.
