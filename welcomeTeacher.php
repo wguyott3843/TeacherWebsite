@@ -53,10 +53,10 @@
 		<div style = "float:right">
 		<h3>Manage:</h3>
 			<ul style = "list-style-type: none">
-				<li><button class = "btn btn-link btn-block" type = "submit">profile</button></li>
+				<li><a class = "btn" href = "teacherProfile.php" type = "submit">profile</button></li>
 				<li><a class = "btn" href = "teacherClasses.php" type = "button">classes</button></a></li>
-				<li><button class = "btn btn-link btn-block" type = "submit">students</button></li>
-				<li><button class = "btn btn-link btn-block" type = "submit">announcements</button></li>
+				<li><a class = "btn" href = "studentList.php" type = "submit">students</button></li>
+				<li><a class = "btn" href = "teacherAnnouncement.php" type = "submit">announcements</button></li>
 				<li><a class = "btn" href = "logout.php" type = "button">logout</button></a></li>
 			</ul>
 		</div>

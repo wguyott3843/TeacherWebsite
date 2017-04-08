@@ -37,7 +37,7 @@
 			die("Database Error: " . $e->getMessage());
 		}
    }
-   else{
-	   header("location:logout.php");
-   }
+	else{
+	  header("location:logout.php");
+	}
 ?>
