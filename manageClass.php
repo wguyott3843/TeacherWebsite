@@ -116,7 +116,7 @@
 		<div style = "float:right">
 		<h3>Manage:</h3>
 			<ul style = "list-style-type: none">
-				<li><a class = "btn" href = "manageHomework.php" type = "button">homework</a></li>
+				<li><a class = "btn" href = "teacherHomework.php" type = "button">homework</a></li>
 				<li><a class = "btn" href = "manageClassAnnouncement.php" type = "button">announcements</a></li>
 				<li><a class = "btn" href = "teacherClasses.php" type = "button">cancel</a></li>
 				<li><a class = "btn" href = "logout.php" type = "button">logout</a></li>
