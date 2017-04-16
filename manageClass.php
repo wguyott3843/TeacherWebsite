@@ -93,14 +93,14 @@
 						<?php endforeach;?>
 					</select>
 			</div>
-			<div class="form-group">
-				<label for="classNumber">Class Number:</label>
+			<div class = "form-group">
+				<label for = "classNumber">Class Number:</label>
 				<textarea class = "form-control" form = "selectClassForm" style = "resize:none" maxLength = 9 rows = 1 cols = 9 id = "classNumber" name = "classNumber" required><?php echo $classNumber; ?></textarea>
 				<br>
-				<label for="className">Class Name:</label>
+				<label for = "className">Class Name:</label>
 				<textarea class = "form-control" form = "selectClassForm" style = "resize:none" maxLength = 40 rows = 1 cols = 40 id = "className" name = "className" required><?php echo $className; ?></textarea>
 				<br>
-				<label for="classDescription">Class Description:</label>
+				<label for = "classDescription">Class Description:</label>
 				<textarea class = "form-control" form = "selectClassForm" style = "resize:none" maxLength = 500 rows = 7 cols = 80 id = "classDescription" name = "classDescription" required><?php echo $classDescription; ?></textarea>
 			</div>
 		</form>

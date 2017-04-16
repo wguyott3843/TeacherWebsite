@@ -33,3 +33,9 @@ uses classAnnouncements.php
 7. things to document: 
 
 	if there are two logins from the same browser instance they end up sharing session state. This probably could be fixed by assigning names to each session when we create them.  This needs further investigation.
+
+	Need to figure out some way for teachers to add students to classes.  Not going to have time to do that for this project.  
+
+	Deleteing a student and then trying to add a new student with the same first and last name will fail becasue the original student record 
+	is still in the database with a non null delete date.  So the uniqueness constraint will prevent adding a new record even though the old one is no longer valid.
+

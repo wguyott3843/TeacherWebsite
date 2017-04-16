@@ -55,13 +55,10 @@
 			<ul style = "list-style-type: none">
 				<li><a class = "btn" href = "teacherProfile.php" type = "submit">profile</button></li>
 				<li><a class = "btn" href = "teacherClasses.php" type = "button">classes</button></a></li>
-				<li><a class = "btn" href = "studentList.php" type = "submit">students</button></li>
+				<li><a class = "btn" href = "teacherStudents.php" type = "submit">students</button></li>
 				<li><a class = "btn" href = "teacherAnnouncement.php" type = "submit">announcements</button></li>
 				<li><a class = "btn" href = "logout.php" type = "button">logout</button></a></li>
 			</ul>
-		</div>
-		<div style = "float:left">
-			<p> Note: Under "classes" we have "homework" and "anouncements"</p>
 		</div>
     </div> <!-- /container -->
 	
