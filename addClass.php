@@ -2,13 +2,13 @@
    include('database php/session.php');
    
    if($_SESSION['class_number'] == ""){
-	   $error = "you must specify a class number";
+	   $error = "You must specify a class number.";
    }
    elseif($_SESSION['class_name'] == ""){
-	   $error = "you must specify a class name.";
+	   $error = "You must specify a class name.";
    }
    elseif($_SESSION['class_description'] == ""){
-	   $error = "you must specify a class description";
+	   $error = "You must specify a class description.";
    }
    else{
 		// Doing this to prevent sql hacking.

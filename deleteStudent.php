@@ -1,6 +1,36 @@
 <?php
    include('database php/session.php');
-   include('database php/classes.php');
+   
+   if($_SESSION['person_firstname'] == ""){
+	   $error = "You must specify a first name.";
+   }
+   elseif($_SESSION['person_lastname'] == ""){
+	   $error = "You must specify a last name.";
+   }
+   else{
+		$studentId = $_SESSION['student_id'];
+		
+		try
+		{
+			$sql = "SELECT PersonId FROM Student WHERE Id = '$studentId'";
+			$personsResult = mysqli_query($db,$sql);
+			$row = mysqli_fetch_array($personsResult,MYSQLI_ASSOC);
+			$personId = $row['PersonId'];
+			
+			$sql = "UPDATE Person SET DeleteDate = CURDATE() WHERE Id = '$personId'";
+			mysqli_query($db,$sql);
+			
+			unset($_SESSION['student_id']);
+			
+			header("location: manageStudent.php");
+		}
+		catch(Exception $e)
+		{
+			die("Database Error: " . $e->getMessage());
+		}
+		
+		header("location: manageStudent.php");
+   }
 ?>
 
 <html lang = "en">
@@ -13,7 +43,7 @@
     <meta name = "author" content = "William Guyott">
 	<link rel = "icon" href = "images/Apple.ico">
 	
-    <title>Classes</title>
+    <title>Delete Class</title>
 	
 	<!-- Bootstrap core CSS -->
     <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet">
@@ -23,30 +53,8 @@
   </head>
   <body>
     <div class = "container">
-		<div>
-			<h2>Assigned Classes</h2>
-			<div style = "overflow: scroll; height: 500px;">
-				<table class = "table table-striped table-bordered">
-					<tbody>
-						 <?php foreach($classes as $row): ?>
-							 <tr>
-								 <td><?php echo $row['Number']; ?></td>
-								 <td><?php echo $row['Name']; ?></td>
-							 </tr>
-						 <?php endforeach;?>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<div style = "float:right">
-		<h3>Manage:</h3>
-			<ul style = "list-style-type: none">
-				<li><a class = "btn" href = "studentHomework.php" type = "button">homework</a></li>
-				<li><a class = "btn" href = "studentAnnouncement.php" type = "button">announcements</a></li>
-				<li><a class = "btn" href = "welcomeStudent.php" type = "button">cancel</a></li>
-				<li><a class = "btn" href = "logout.php" type = "button">logout</a></li>
-			</ul>
-		</div>
+		<h1>Error: <?php echo $error ?></h1>
+		<a class = "btn" href = "manageStudent.php" type = "button">continue</a>
     </div> <!-- /container -->
 	
 	<!-- Put all javascript at the end of the body so the UI elements get rendered first.

@@ -11,7 +11,8 @@ CREATE TABLE Person (
 	Password VARCHAR(25) NOT NULL,
 	CreateDate DATE NOT NULL,
 	DeleteDate DATE NULL,
-	PRIMARY KEY (Id)
+	PRIMARY KEY (Id),
+	UNIQUE KEY (FirstName, LastName)
 );
 
 
@@ -53,12 +54,18 @@ USE TeacherWebsite;
 
 CREATE TABLE Student  (
 	Id INT NOT NULL AUTO_INCREMENT,
-	PersonId INT NOT NULL,
+	PersonId INT NOT NULL UNIQUE,
 	GradeLevel INT NOT NULL,
+	HomeroomTeacherId INT NOT NULL,
 	PRIMARY KEY (Id),
 	CONSTRAINT fk_student_person_id
 		FOREIGN KEY (PersonId)
 		REFERENCES Person (Id)
+		ON DELETE RESTRICT
+		ON UPDATE RESTRICT,
+	CONSTRAINT fk_student_teacher_id
+		FOREIGN KEY (HomeroomTeacherId)
+		REFERENCES Teacher (Id)
 		ON DELETE RESTRICT
 		ON UPDATE RESTRICT
 );

@@ -1,6 +1,6 @@
 <?php
     include('database php/session.php');
-	include('database php/classes.php');
+	include('database php/students.php');
 ?>
 
 <html lang = "en">
@@ -13,7 +13,7 @@
     <meta name = "author" content = "William Guyott">
 	<link rel = "icon" href = "images/Apple.ico">
 	
-    <title>Classes</title>
+    <title>Students</title>
 	
 	<!-- Bootstrap core CSS -->
     <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet">
@@ -25,14 +25,17 @@
     <div class = "container">
 	
 		<div>
-			<h2>Assigned Classes</h2>
+			<h2>Homeroom Students</h2>
 			<div style = "overflow: scroll; height: 500px;">
 				<table class = "table table-striped table-bordered">
 					<tbody>
-						 <?php foreach($classes as $row): ?>
+						 <?php foreach($students as $row): ?>
 							 <tr>
-								 <td><?php echo $row['Number']; ?></td>
-								 <td><?php echo $row['Name']; ?></td>
+								 <td><?php echo $row['LastName']; ?></td>
+								 <td><?php echo $row['FirstName']; ?></td>
+								 <td><?php echo $row['GradeLevel']; ?></td>
+								 <td><?php echo $row['Email']; ?></td>
+								 <td><?php echo $row['Login']; ?></td>
 							 </tr>
 						 <?php endforeach;?>
 					</tbody>
@@ -42,7 +45,7 @@
 		<div style = "float:right">
 		<h3>Manage:</h3>
 			<ul style = "list-style-type: none">
-				<li><a class = "btn" href = "manageClass.php" type = "button">modify</a></li>
+				<li><a class = "btn" href = "manageStudent.php" type = "button">modify</a></li>
 				<li><a class = "btn" href = "welcomeTeacher.php" type = "button">cancel</a></li>
 				<li><a class = "btn" href = "logout.php" type = "button">logout</a></li>
 			</ul>

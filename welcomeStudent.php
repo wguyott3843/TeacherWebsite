@@ -59,9 +59,6 @@
 				<li><a class = "btn" type = "button" href = "logout.php">logout</a></li>
 			</ul>
 		</div>
-		<div style = "float:left">
-			<p> Note: Under "classes" we have "homework" and "anouncements"</p>
-		</div>
     </div> <!-- /container -->
 	
 	<!-- Put all javascript at the end of the body so the UI elements get rendered first.

@@ -43,14 +43,14 @@ INSERT INTO Class (Number, Name, Description, CreateDate, DeleteDate)
 
 USE TeacherWebsite;
 
-INSERT INTO Student (PersonId, GradeLevel)
-	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName1'), 5;
-INSERT INTO Student (PersonId, GradeLevel)
-	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName2'), 6;
-INSERT INTO Student (PersonId, GradeLevel)
-	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName3'), 7;
-INSERT INTO Student (PersonId, GradeLevel)
-	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName4'), 8;
+INSERT INTO Student (PersonId, GradeLevel, HomeroomTeacherId)
+	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName1' AND FirstName = 'StudentFirstName1'), 5, (SELECT Id FROM Teacher WHERE PersonId = (SELECT Id FROM Person WHERE FirstName = 'TeacherFirstName1' AND LastName = 'TeacherLastName1'));
+INSERT INTO Student (PersonId, GradeLevel, HomeroomTeacherId)
+	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName2' AND FirstName = 'StudentFirstName2'), 6, (SELECT Id FROM Teacher WHERE PersonId = (SELECT Id FROM Person WHERE FirstName = 'TeacherFirstName1' AND LastName = 'TeacherLastName1'));
+INSERT INTO Student (PersonId, GradeLevel, HomeroomTeacherId)
+	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName3' AND FirstName = 'StudentFirstName3'), 7, (SELECT Id FROM Teacher WHERE PersonId = (SELECT Id FROM Person WHERE FirstName = 'TeacherFirstName2' AND LastName = 'TeacherLastName2'));
+INSERT INTO Student (PersonId, GradeLevel, HomeroomTeacherId)
+	SELECT (SELECT Id FROM Person WHERE LastName = 'StudentLastName4' AND FirstName = 'StudentFirstName4'), 8, (SELECT Id FROM Teacher WHERE PersonId = (SELECT Id FROM Person WHERE FirstName = 'TeacherFirstName2' AND LastName = 'TeacherLastName2'));
 
 # add test homework data 
 
@@ -112,3 +112,7 @@ INSERT INTO StudentClassMap (StudentId, ClassId, CreateDate, DeleteDate)
 	SELECT Id, (SELECT Id FROM Class WHERE Number = '201'),'2017-02-18', NULL FROM Student WHERE PersonId = (SELECT Id FROM Person WHERE LastName = 'StudentLastName1');
 INSERT INTO StudentClassMap (StudentId, ClassId, CreateDate, DeleteDate)
 	SELECT Id, (SELECT Id FROM Class WHERE Number = '202'),'2017-02-18', NULL FROM Student WHERE PersonId = (SELECT Id FROM Person WHERE LastName = 'StudentLastName2');
+INSERT INTO StudentClassMap (StudentId, ClassId, CreateDate, DeleteDate)
+	SELECT Id, (SELECT Id FROM Class WHERE Number = '202'),'2017-02-18', NULL FROM Student WHERE PersonId = (SELECT Id FROM Person WHERE LastName = 'StudentLastName3');
+INSERT INTO StudentClassMap (StudentId, ClassId, CreateDate, DeleteDate)
+	SELECT Id, (SELECT Id FROM Class WHERE Number = '202'),'2017-02-18', NULL FROM Student WHERE PersonId = (SELECT Id FROM Person WHERE LastName = 'StudentLastName4');
