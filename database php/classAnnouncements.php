@@ -1,10 +1,10 @@
 <?php
 	if(isset($_SESSION['class_id'])){
 		// loading announcements for class id
-	   
-	    $classid = $_SESSION['class_id'];
+		   
+		$classid = $_SESSION['class_id'];
 		$announcements = array();
-		
+			
 		try
 		{
 			$sql = "SELECT Id AS AnnouncementId, Text FROM Announcement WHERE ClassId = '$classid' AND DeleteDate IS NULL AND ExpirationDate >= CURDATE()";
@@ -17,8 +17,8 @@
 		{
 			die("Database Error: " . $e->getMessage());
 		}
-   }
-   else{
-	   header("location:login.php");
-   }
+	}
+	else{
+		header("location:logout.php");
+	}
 ?>

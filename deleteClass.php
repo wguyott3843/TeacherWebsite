@@ -1,38 +1,27 @@
 <?php
-   include('database php/session.php');
+	include('database php/session.php');
    
-   if($_SESSION['class_number'] == ""){
-	   $error = "you must specify a class number";
-   }
-   elseif($_SESSION['class_name'] == ""){
-	   $error = "you must specify a class name.";
-   }
-   elseif($_SESSION['class_description'] == ""){
-	   $error = "you must specify a class description";
-   }
-   else{
-		$classId = $_SESSION['class_id'];
-		$teacherId = $_SESSION['teacher_id'];
+	$classId = $_SESSION['class_id'];
+	$teacherId = $_SESSION['teacher_id'];
+	
+	try
+	{
+		$sql = "UPDATE Class SET DeleteDate = CURDATE() WHERE Id = '$classId'";
+		mysqli_query($db,$sql);
 		
-		try
-		{
-			$sql = "UPDATE Class SET DeleteDate = CURDATE() WHERE Id = '$classId'";
-			mysqli_query($db,$sql);
-			
-			$sql = "UPDATE TeacherClassMap SET DeleteDate = CURDATE() WHERE TeacherId = '$teacherId' AND ClassId = '$classId'";
-			mysqli_query($db,$sql);
-			
-			unset($_SESSION['class_id']);
-			
-			header("location: manageClass.php");
-		}
-		catch(Exception $e)
-		{
-			die("Database Error: " . $e->getMessage());
-		}
+		$sql = "UPDATE TeacherClassMap SET DeleteDate = CURDATE() WHERE TeacherId = '$teacherId' AND ClassId = '$classId'";
+		mysqli_query($db,$sql);
 		
+		unset($_SESSION['class_id']);
+			
 		header("location: manageClass.php");
-   }
+	}
+	catch(Exception $e)
+	{
+		die("Database Error: " . $e->getMessage());
+	}
+		
+	header("location: manageClass.php");
 ?>
 
 <html lang = "en">

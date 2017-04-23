@@ -30,7 +30,9 @@ uses classAnnouncements.php
 6. add a due date to the homework table.  Update studentHomework.php to display the due date.  Also update the teacherHomework.php page with due date.
    In the meantime the teacher can include the due date in the text associated with the homework.  Also add names to the homework table.
 
-7. things to document: 
+7. When i add the due date to the homework table, also add a long description.
+
+8. things to document: 
 
 	if there are two logins from the same browser instance they end up sharing session state. This probably could be fixed by assigning names to each session when we create them.  This needs further investigation.
 
@@ -38,4 +40,5 @@ uses classAnnouncements.php
 
 	Deleteing a student and then trying to add a new student with the same first and last name will fail becasue the original student record 
 	is still in the database with a non null delete date.  So the uniqueness constraint will prevent adding a new record even though the old one is no longer valid.
+
 
