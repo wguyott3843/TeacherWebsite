@@ -1,6 +1,10 @@
 <?php
 	include('database php/session.php');
 	
+	// This is needed to handle the case were the user comes in here and goes back to the previous page then comes back here again.
+	// The old announcement_id value is no longer correct and needs to be cleared here.
+	unset($_SESSION['announcement_id']);
+	
 	$data = array();
 	try
 	{
@@ -56,7 +60,7 @@
 				<li><a class = "btn" href = "teacherProfile.php" type = "submit">profile</button></li>
 				<li><a class = "btn" href = "teacherClasses.php" type = "button">classes</button></a></li>
 				<li><a class = "btn" href = "teacherStudents.php" type = "submit">students</button></li>
-				<li><a class = "btn" href = "teacherAnnouncement.php" type = "submit">announcements</button></li>
+				<li><a class = "btn" href = "manageGlobalAnnouncement.php" type = "submit">announcements</button></li>
 				<li><a class = "btn" href = "logout.php" type = "button">logout</button></a></li>
 			</ul>
 		</div>

@@ -34,6 +34,11 @@
 		}
 	}
 	else{
+		// This is needed to handle the case were the user comes in here and goes back to the previous page then comes back here again.
+		// The old homework_id or announcement_id value is no longer correct and needs to be cleared here.
+		unset($_SESSION['homework_id']);
+		unset($_SESSION['announcement_id']);
+		
 		$numberOfClasses = sizeof($classes);
 	   
 		if($numberOfClasses > 0){
@@ -43,6 +48,10 @@
 			else{
 				$classId = $classes[0]['ClassId'];
 			}
+			
+			// I have to set the classId in session here for the initally selected class.  
+			// If the user selects any other classes the classId gets set in session as part of the user changing the current selection.
+			$_SESSION['class_id'] = $classId;
 			
 			foreach($classes as $class): 
 				if($class['ClassId'] == $classId){
@@ -116,7 +125,7 @@
 		<div style = "float:right">
 		<h3>Manage:</h3>
 			<ul style = "list-style-type: none">
-				<li><a class = "btn" href = "teacherHomework.php" type = "button">homework</a></li>
+				<li><a class = "btn" href = "manageHomework.php" type = "button">homework</a></li>
 				<li><a class = "btn" href = "manageClassAnnouncement.php" type = "button">announcements</a></li>
 				<li><a class = "btn" href = "teacherClasses.php" type = "button">cancel</a></li>
 				<li><a class = "btn" href = "logout.php" type = "button">logout</a></li>
