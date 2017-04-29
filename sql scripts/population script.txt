@@ -70,21 +70,21 @@ INSERT INTO Homework(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
 
 USE TeacherWebsite;
 
-INSERT INTO Announcement(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
-	SELECT Id,'Your first homework is due on the 22nd.', '2019-06-22', '2017-02-18', NULL FROM Class WHERE Number = '101';
-INSERT INTO Announcement(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
-	SELECT Id,'Your first homework assignment is due on the 25th.','2019-06-25', '2017-02-18', NULL FROM Class WHERE Number = '102';
-INSERT INTO Announcement(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
-	SELECT Id,'Your first homework assignment is due on the 30th.', '2019-06-30', '2017-02-18', NULL FROM Class WHERE Number = '102';
+INSERT INTO Announcement(ClassId, Description, Text, ExpirationDate, CreateDate, DeleteDate)
+	SELECT Id,'intro to computing 1','Your first homework is due on the 22nd.', '2019-06-22', '2017-02-18', NULL FROM Class WHERE Number = '101';
+INSERT INTO Announcement(ClassId, Description, Text, ExpirationDate, CreateDate, DeleteDate)
+	SELECT Id,'webprogramming 1','Your first homework assignment is due on the 25th.','2019-06-25', '2017-02-18', NULL FROM Class WHERE Number = '102';
+INSERT INTO Announcement(ClassId, Description, Text, ExpirationDate, CreateDate, DeleteDate)
+	SELECT Id,'database 1','Your first homework assignment is due on the 30th.', '2019-06-30', '2017-02-18', NULL FROM Class WHERE Number = '102';
 # this is a general announcement so we left ClassId as NULL
-INSERT INTO Announcement(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
-	VALUES (NULL,'No school today because of snow.', '2019-06-30','2017-03-14', NULL);
-INSERT INTO Announcement(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
-	VALUES (NULL,'Please check your classes to be sure of your homework due dates.', '2019-06-30','2017-02-18', NULL);
-INSERT INTO Announcement(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
-	VALUES (NULL,'Remember that pet day is this friday.  So bring your pet if you want to but remember they have to be able to behave themselves when they are around alot of people.', '2019-06-30','2017-03-01', NULL);
-INSERT INTO Announcement(ClassId, Text, ExpirationDate, CreateDate, DeleteDate)
-	VALUES (NULL,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut maximus lectus quis magna rhoncus, sit amet eleifend lectus malesuada. Vestibulum eget quam sollicitudin, scelerisque nulla ac, varius dui. Curabitur a dapibus libero. Sed rutrum non lorem sit amet interdum. Pellentesque ac lectus at dui posuere sodales vitae vel lectus. Nulla rhoncus maximus lorem, id varius dui rutrum vel. Cras at consectetur nibh.', '2019-06-30','2017-02-18', NULL);
+INSERT INTO Announcement(ClassId, Description, Text, ExpirationDate, CreateDate, DeleteDate)
+	VALUES (NULL,'general 1','No school today because of snow.', '2019-06-30','2017-03-14', NULL);
+INSERT INTO Announcement(ClassId, Description, Text, ExpirationDate, CreateDate, DeleteDate)
+	VALUES (NULL,'general 2','Please check your classes to be sure of your homework due dates.', '2019-06-30','2017-02-18', NULL);
+INSERT INTO Announcement(ClassId, Description, Text, ExpirationDate, CreateDate, DeleteDate)
+	VALUES (NULL,'general 3','Remember that pet day is this friday.  So bring your pet if you want to but remember they have to be able to behave themselves when they are around alot of people.', '2019-06-30','2017-03-01', NULL);
+INSERT INTO Announcement(ClassId, Description, Text, ExpirationDate, CreateDate, DeleteDate)
+	VALUES (NULL,'general 4','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut maximus lectus quis magna rhoncus, sit amet eleifend lectus malesuada. Vestibulum eget quam sollicitudin, scelerisque nulla ac, varius dui. Curabitur a dapibus libero. Sed rutrum non lorem sit amet interdum. Pellentesque ac lectus at dui posuere sodales vitae vel lectus. Nulla rhoncus maximus lorem, id varius dui rutrum vel. Cras at consectetur nibh.', '2019-06-30','2017-02-18', NULL);
 
 
 # add test teacherclassmap data

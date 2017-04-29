@@ -98,6 +98,7 @@ USE TeacherWebsite;
 CREATE TABLE Announcement(
 	Id INT NOT NULL AUTO_INCREMENT,
 	ClassId INT NULL,
+	Description VARCHAR(20) NOT NULL,
 	Text VARCHAR(500) NOT NULL,
 	ExpirationDate DATE NOT NULL,
 	CreateDate DATE NOT NULL,
