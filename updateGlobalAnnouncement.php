@@ -2,19 +2,20 @@
    include('database php/session.php');
    
    if($_SESSION['announcement_description'] == ""){
-	   $error = "You must specify a announcement description.";
+	   $error = "you must specify a description for the announcement.";
    }
    elseif($_SESSION['announcement_text'] == ""){
-	   $error = "You must specify some text for the announcement.";
+	   $error = "you must specify announcement text.";
    }
    else{
 		// Doing this to prevent sql hacking.
 		$announcementDescription = mysqli_real_escape_string($db,$_SESSION['announcement_description']);
-		$annoucmentText = mysqli_real_escape_string($db,$_SESSION['announcement_text']);
+		$announcementText = mysqli_real_escape_string($db,$_SESSION['announcement_text']);
+		$classId = $_SESSION['announcement_id'];
 		
 		try
 		{
-			$sql = "INSERT INTO Announcement (ClassId, Description, Text, ExpirationDate, CreateDate, DeleteDate) VALUES (NULL, '$announcementDescription', '$annoucmentText', '2019-6-30', CURDATE(), NULL)";
+			$sql = "UPDATE Announcement SET Description = '$announcementDescription', Text = '$announcementText'";
 			mysqli_query($db,$sql);
 			
 			header("location: manageGlobalAnnouncement.php");
@@ -38,7 +39,7 @@
     <meta name = "author" content = "William Guyott">
 	<link rel = "icon" href = "images/Apple.ico">
 	
-    <title>Add Global Announcement</title>
+    <title>Update Global Announcement</title>
 	
 	<!-- Bootstrap core CSS -->
     <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet">

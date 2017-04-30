@@ -1,31 +1,23 @@
 <?php
-   include('database php/session.php');
+	include('database php/session.php');
    
-   if($_SESSION['announcement_description'] == ""){
-	   $error = "You must specify a announcement description.";
-   }
-   elseif($_SESSION['announcement_text'] == ""){
-	   $error = "You must specify some text for the announcement.";
-   }
-   else{
-		// Doing this to prevent sql hacking.
-		$announcementDescription = mysqli_real_escape_string($db,$_SESSION['announcement_description']);
-		$annoucmentText = mysqli_real_escape_string($db,$_SESSION['announcement_text']);
+	$announcementId = $_SESSION['announcement_id'];
+	
+	try
+	{
+		$sql = "UPDATE Announcement SET DeleteDate = CURDATE() WHERE Id = '$announcementId'";
+		mysqli_query($db,$sql);
 		
-		try
-		{
-			$sql = "INSERT INTO Announcement (ClassId, Description, Text, ExpirationDate, CreateDate, DeleteDate) VALUES (NULL, '$announcementDescription', '$annoucmentText', '2019-6-30', CURDATE(), NULL)";
-			mysqli_query($db,$sql);
+		unset($_SESSION['announcement_id']);
 			
-			header("location: manageGlobalAnnouncement.php");
-		}
-		catch(Exception $e)
-		{
-			die("Database Error: " . $e->getMessage());
-		}
-		
 		header("location: manageGlobalAnnouncement.php");
-   }
+	}
+	catch(Exception $e)
+	{
+		die("Database Error: " . $e->getMessage());
+	}
+		
+	header("location: manageGlobalAnnouncement.php");
 ?>
 
 <html lang = "en">
@@ -38,7 +30,7 @@
     <meta name = "author" content = "William Guyott">
 	<link rel = "icon" href = "images/Apple.ico">
 	
-    <title>Add Global Announcement</title>
+    <title>Delete Global Announcement</title>
 	
 	<!-- Bootstrap core CSS -->
     <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet">

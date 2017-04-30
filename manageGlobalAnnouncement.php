@@ -6,6 +6,7 @@
 		if(isset($_POST['operation'])){
 			$operation = $_POST['operation'];
 			if($operation == 'add'){
+				$_SESSION['announcement_description'] = $_POST['announcementDescription'];
 				$_SESSION['announcement_text'] = $_POST['announcementText'];
 				header("location:addGlobalAnnouncement.php");
 			}
@@ -13,6 +14,7 @@
 				header("location:deleteGlobalAnnouncement.php");
 			}
 			elseif($operation == 'update'){
+				$_SESSION['announcement_description'] = $_POST['announcementDescription'];
 				$_SESSION['announcement_text'] = $_POST['announcementText'];
 				header("location:updateGlobalAnnouncement.php");
 			}
@@ -46,6 +48,7 @@
 			
 			foreach($announcements as $announcement): 
 				if($announcement['AnnouncementId'] == $announcementId){
+					$announcementDescription = $announcement['Description'];
 					$announcementText = $announcement['Text'];
 					break;
 				}
@@ -53,6 +56,7 @@
 		}
 		else{
 			$announcementId = -1;
+			$announcementDescription = "";
 			$announcementText = "";
 		}
 	}
@@ -85,11 +89,14 @@
 				<label for = "announcementList">Select list (select one):</label>
 					<select class = "form-control" id = "announcementList" onchange = "SetAnnouncementIdAndPost(this.value)">
 						<?php foreach($announcements as $announcement): ?>
-							<option value = <?php echo $announcement['AnnouncementId'] ?> <?php if($announcement['AnnouncementId'] == $announcementId){echo "selected";}?>><?php echo $announcement['Text']; ?></option>
+							<option value = <?php echo $announcement['AnnouncementId'] ?> <?php if($announcement['AnnouncementId'] == $announcementId){echo "selected";}?>><?php echo $announcement['Description']; ?></option>
 						<?php endforeach;?>
 					</select>
 			</div>
 			<div class = "form-group">
+				<label for = "announcementDescription">Description:</label>
+				<textarea class = "form-control" form = "selectAnnouncementForm" style = "resize:none" maxLength = 20 rows = 1 cols = 20 id = "announcementDescription" name = "announcementDescription" required><?php echo $announcementDescription; ?></textarea>
+				<br>
 				<label for = "announcementText">Text:</label>
 				<textarea class = "form-control" form = "selectAnnouncementForm" style = "resize:none" maxLength = 500 rows = 7 cols = 80 id = "announcementText" name = "announcementText" required><?php echo $announcementText; ?></textarea>
 			</div>

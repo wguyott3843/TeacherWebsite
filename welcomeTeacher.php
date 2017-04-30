@@ -39,6 +39,16 @@
   </head>
   <body>
     <div class = "container">
+	<div style = "float:right">
+		<h3>Manage:</h3>
+			<ul style = "list-style-type: none">
+				<li><a href="teacherProfile.php" class="btn btn-default">profile</a></li>
+				<li><a href="teacherClasses.php" class="btn btn-default">classes</a></li>
+				<li><a href="teacherStudents.php" class="btn btn-default">students</a></li>
+				<li><a href="manageGlobalAnnouncement.php" class="btn btn-default">announcements</a></li>
+				<li><a href="logout.php" class="btn btn-default">logout</a></li>
+			</ul>
+		</div>
 	
 		<div>
 			<h2>Current Announcements</h2>
@@ -53,16 +63,6 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
-		<div style = "float:right">
-		<h3>Manage:</h3>
-			<ul style = "list-style-type: none">
-				<li><a class = "btn" href = "teacherProfile.php" type = "submit">profile</button></li>
-				<li><a class = "btn" href = "teacherClasses.php" type = "button">classes</button></a></li>
-				<li><a class = "btn" href = "teacherStudents.php" type = "submit">students</button></li>
-				<li><a class = "btn" href = "manageGlobalAnnouncement.php" type = "submit">announcements</button></li>
-				<li><a class = "btn" href = "logout.php" type = "button">logout</button></a></li>
-			</ul>
 		</div>
     </div> <!-- /container -->
 	
