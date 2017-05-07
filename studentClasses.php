@@ -41,10 +41,10 @@
 		<div style = "float:right">
 		<h3>Manage:</h3>
 			<ul style = "list-style-type: none">
-				<li><a class = "btn" href = "studentHomework.php" type = "button">homework</a></li>
-				<li><a class = "btn" href = "studentAnnouncement.php" type = "button">announcements</a></li>
-				<li><a class = "btn" href = "welcomeStudent.php" type = "button">cancel</a></li>
-				<li><a class = "btn" href = "logout.php" type = "button">logout</a></li>
+				<li><a href = "studentHomework.php" class = "btn btn-default">homework</a></li>
+				<li><a href = "studentAnnouncement.php" class = "btn btn-default">announcements</a></li>
+				<li><a href = "welcomeStudent.php" class = "btn btn-default">back</a></li>
+				<li><a href = "logout.php" class = "btn btn-default">logout</a></li>
 			</ul>
 		</div>
     </div> <!-- /container -->

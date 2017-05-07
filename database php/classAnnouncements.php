@@ -7,7 +7,7 @@
 			
 		try
 		{
-			$sql = "SELECT Id AS AnnouncementId, Text FROM Announcement WHERE ClassId = '$classid' AND DeleteDate IS NULL AND ExpirationDate >= CURDATE()";
+			$sql = "SELECT Id AS AnnouncementId, Description, Text FROM Announcement WHERE ClassId = '$classid' AND DeleteDate IS NULL AND ExpirationDate >= CURDATE()";
 			$announcementsResult = mysqli_query($db,$sql);
 			while($row = mysqli_fetch_array($announcementsResult,MYSQLI_ASSOC))
 			{

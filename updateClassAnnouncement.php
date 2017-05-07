@@ -1,6 +1,32 @@
 <?php
-    include('database php/session.php');
-	include('database php/students.php');
+   include('database php/session.php');
+   
+   if($_SESSION['announcement_description'] == ""){
+	   $error = "you must specify a description for the announcement.";
+   }
+   elseif($_SESSION['announcement_text'] == ""){
+	   $error = "you must specify announcement text.";
+   }
+   else{
+		// Doing this to prevent sql hacking.
+		$announcementDescription = mysqli_real_escape_string($db,$_SESSION['announcement_description']);
+		$announcementText = mysqli_real_escape_string($db,$_SESSION['announcement_text']);
+		$classId = $_SESSION['announcement_id'];
+		
+		try
+		{
+			$sql = "UPDATE Announcement SET Description = '$announcementDescription', Text = '$announcementText'";
+			mysqli_query($db,$sql);
+			
+			header("location: manageGlobalAnnouncement.php");
+		}
+		catch(Exception $e)
+		{
+			die("Database Error: " . $e->getMessage());
+		}
+		
+		header("location: manageGlobalAnnouncement.php");
+   }
 ?>
 
 <html lang = "en">
@@ -13,7 +39,7 @@
     <meta name = "author" content = "William Guyott">
 	<link rel = "icon" href = "images/Apple.ico">
 	
-    <title>Students</title>
+    <title>Update Global Announcement</title>
 	
 	<!-- Bootstrap core CSS -->
     <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet">
@@ -23,32 +49,8 @@
   </head>
   <body>
     <div class = "container">
-		<div style = "float:right">
-		<h3>Manage:</h3>
-			<ul style = "list-style-type: none">
-				<li><a href = "manageStudent.php" class = "btn btn-default">modify</a></li>
-				<li><a href = "welcomeTeacher.php" class = "btn btn-default">back</a></li>
-				<li><a href = "logout.php" class = "btn btn-default">logout</a></li>
-			</ul>
-		</div>
-		<div>
-			<h2>Homeroom Students</h2>
-			<div style = "overflow: scroll; height: 500px;">
-				<table class = "table table-striped table-bordered">
-					<tbody>
-						 <?php foreach($students as $row): ?>
-							 <tr>
-								 <td><?php echo $row['LastName']; ?></td>
-								 <td><?php echo $row['FirstName']; ?></td>
-								 <td><?php echo $row['GradeLevel']; ?></td>
-								 <td><?php echo $row['Email']; ?></td>
-								 <td><?php echo $row['Login']; ?></td>
-							 </tr>
-						 <?php endforeach;?>
-					</tbody>
-				</table>
-			</div>
-		</div>
+		<h1>Error: <?php echo $error ?></h1>
+		<a class = "btn" href = "manageClass.php" type = "button">continue</a>
     </div> <!-- /container -->
 	
 	<!-- Put all javascript at the end of the body so the UI elements get rendered first.
