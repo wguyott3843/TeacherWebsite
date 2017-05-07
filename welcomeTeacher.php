@@ -39,14 +39,14 @@
   </head>
   <body>
     <div class = "container">
-	<div style = "float:right">
+		<div style = "float:right">
 		<h3>Manage:</h3>
 			<ul style = "list-style-type: none">
-				<li><a href="teacherProfile.php" class="btn btn-default">profile</a></li>
-				<li><a href="teacherClasses.php" class="btn btn-default">classes</a></li>
-				<li><a href="teacherStudents.php" class="btn btn-default">students</a></li>
-				<li><a href="manageGlobalAnnouncement.php" class="btn btn-default">announcements</a></li>
-				<li><a href="logout.php" class="btn btn-default">logout</a></li>
+				<li><a href = "teacherProfile.php" class = "btn btn-default">profile</a></li>
+				<li><a href = "teacherClasses.php" class = "btn btn-default">classes</a></li>
+				<li><a href = "teacherStudents.php" class = "btn btn-default">students</a></li>
+				<li><a href = "manageGlobalAnnouncement.php" class = "btn btn-default">announcements</a></li>
+				<li><a href = "logout.php" class = "btn btn-default">logout</a></li>
 			</ul>
 		</div>
 	

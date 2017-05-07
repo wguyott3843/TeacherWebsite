@@ -23,6 +23,14 @@
   </head>
   <body>
     <div class = "container">
+		<div style = "float:right">
+		<h3>Manage:</h3>
+			<ul style = "list-style-type: none">
+				<li><a href = "manageClass.php" class="btn btn-default">modify</a></li>
+				<li><a href = "welcomeTeacher.php" class = "btn btn-default">back</a></li>
+				<li><a href = "logout.php" class="btn btn-default">logout</a></li>
+			</ul>
+		</div>
 	
 		<div>
 			<h2>Assigned Classes</h2>
@@ -40,13 +48,7 @@
 			</div>
 		</div>
 		<div style = "float:right">
-		<h3>Manage:</h3>
-			<ul style = "list-style-type: none">
-				<li><a class = "btn" href = "manageClass.php" type = "button">modify</a></li>
-				<li><a class = "btn" href = "welcomeTeacher.php" type = "button">cancel</a></li>
-				<li><a class = "btn" href = "logout.php" type = "button">logout</a></li>
-			</ul>
-		</div>
+		<div style = "float:right">
     </div> <!-- /container -->
 	
 	<!-- Put all javascript at the end of the body so the UI elements get rendered first.

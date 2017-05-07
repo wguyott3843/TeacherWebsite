@@ -113,7 +113,6 @@
 				<textarea class = "form-control" form = "selectClassForm" style = "resize:none" maxLength = 500 rows = 7 cols = 80 id = "classDescription" name = "classDescription" required><?php echo $classDescription; ?></textarea>
 			</div>
 		</form>
-		
 		<div style = "float:right">
 		<h3>Manage Class:</h3>
 			<ul style = "list-style-type: none">
@@ -125,10 +124,10 @@
 		<div style = "float:right">
 		<h3>Manage:</h3>
 			<ul style = "list-style-type: none">
-				<li><a class = "btn" href = "manageHomework.php" type = "button">homework</a></li>
-				<li><a class = "btn" href = "manageClassAnnouncement.php" type = "button">announcements</a></li>
-				<li><a class = "btn" href = "teacherClasses.php" type = "button">cancel</a></li>
-				<li><a class = "btn" href = "logout.php" type = "button">logout</a></li>
+				<li><a href = "manageHomework.php" class = "btn btn-default">homework</a></li>
+				<li><a href = "manageClassAnnouncement.php" class = "btn btn-default">announcements</a></li>
+				<li><a href = "teacherClasses.php" class = "btn btn-default">back</a></li>
+				<li><a href = "logout.php" class = "btn btn-default">logout</a></li>
 			</ul>
 		</div>
     </div> <!-- /container -->

@@ -69,7 +69,7 @@
 			<h5>Password: </h5><input id = "password" name = "password" value = <?php echo $person['Password'] ?>><br><br>
 			<h5>Creation Date: </h5><input readonly value = <?php echo $person['CreateDate']?>><br><br>
 			
-			<button type="button" class="btn" type = "submit">update</button>
+			<button class="btn" type = "submit">update</button>
 			
 			<h5 <?php if($updateStatus == ""){echo "hidden";}?>>update status: success</h5>
 		</form>

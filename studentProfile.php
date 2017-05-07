@@ -51,6 +51,13 @@
   </head>
   <body>
     <div class = "container">
+		<div style = "float:right">
+			<h3>Manage:</h3>
+				<ul style = "list-style-type: none">
+					<li><a href="welcomeStudent.php" class="btn btn-default">back</a></li>
+					<li><a href="logout.php" class="btn btn-default">logout</a></li>
+				</ul>
+		</div>
 		<form name = "updateProfileForm" id = "updateProfileForm" method = "post"> 
 			<h5>First Name: </h5><input readonly value = <?php echo $person['FirstName'] ?>><br><br>
 			<h5>Last Name: </h5><input readonly value = <?php echo $person['LastName'] ?>><br><br>
@@ -59,10 +66,11 @@
 			<h5>Password: </h5><input id = "password" name = "password" value = <?php echo $person['Password'] ?>><br><br>
 			<h5>Creation Date: </h5><input readonly value = <?php echo $person['CreateDate']?>><br><br>
 			
-			<button class = "btn btn-lg btn-primary btn-block" type = "submit">update</button>
+			<button class="btn" type = "submit">update</button>
 			
 			<h5 <?php if($updateStatus == ""){echo "hidden";}?>>update status: success</h5>
 		</form>
+			
     </div> <!-- /container -->
 	
 	<!-- Put all javascript at the end of the body so the UI elements get rendered first.

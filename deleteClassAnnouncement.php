@@ -1,19 +1,23 @@
 <?php
 	include('database php/session.php');
-
-	$data = array();
+   
+	$announcementId = $_SESSION['announcement_id']; 
+	
 	try
 	{
-		$sql = "SELECT Text FROM Announcement WHERE ClassId IS NULL AND ExpirationDate >= CURDATE() ORDER BY CreateDate DESC";
-		$result = mysqli_query($db, $sql);
-		while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-		{
-			$data[] = $row;
-		}
-	}catch(Exception $e)
-	{
-		 die("Database Error: " . $e->getMessage());
+		$sql = "UPDATE Announcement SET DeleteDate = CURDATE() WHERE Id = '$announcementId'";
+		mysqli_query($db,$sql);
+		
+		unset($_SESSION['announcement_id']);
+			
+		header("location: manageClassAnnouncement.php");
 	}
+	catch(Exception $e)
+	{
+		die("Database Error: " . $e->getMessage());
+	}
+		
+	header("location: manageClassAnnouncement.php");
 ?>
 
 <html lang = "en">
@@ -26,7 +30,7 @@
     <meta name = "author" content = "William Guyott">
 	<link rel = "icon" href = "images/Apple.ico">
 	
-    <title>Welcome</title>
+    <title>Delete Class Announcement</title>
 	
 	<!-- Bootstrap core CSS -->
     <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet">
@@ -36,28 +40,8 @@
   </head>
   <body>
     <div class = "container">
-		<div style = "float:right">
-		<h3>Manage:</h3>
-			<ul style = "list-style-type: none">
-				<li><a href = "studentProfile.php" class = "btn btn-default">profile</a></li>
-				<li><a href = "studentClasses.php" class = "btn btn-default">classes</a></li>
-				<li><a href = "logout.php" class = "btn btn-default">logout</a></li>
-			</ul>
-		</div>
-		<div>
-			<h2>Current Announcements for  <?php echo $_SESSION['first_name']; ?></h2>
-			<div style = "overflow: scroll; height: 500px;">
-				<table class = "table table-striped table-bordered">
-					<tbody>
-						 <?php foreach($data as $row): ?>
-							 <tr>
-								 <td><?php echo $row['Text']; ?></td>
-							 </tr>
-						 <?php endforeach;?>
-					</tbody>
-				</table>
-			</div>
-		</div>
+		<h1>Error: <?php echo $error ?></h1>
+		<a class = "btn" href = "manageClass.php" type = "button">continue</a>
     </div> <!-- /container -->
 	
 	<!-- Put all javascript at the end of the body so the UI elements get rendered first.

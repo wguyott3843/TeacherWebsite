@@ -6,6 +6,8 @@
 		if(isset($_POST['operation'])){
 			$operation = $_POST['operation'];
 			if($operation == 'add'){
+				$_SESSION['class_id'] = 
+				$_SESSION['announcement_description'] = $_POST['announcementDescription'];
 				$_SESSION['announcement_text'] = $_POST['announcementText'];
 				header("location:addClassAnnouncement.php");
 			}
@@ -13,6 +15,7 @@
 				header("location:deleteClassAnnouncement.php");
 			}
 			elseif($operation == 'update'){
+				$_SESSION['announcement_description'] = $_POST['announcementDescription'];
 				$_SESSION['announcement_text'] = $_POST['announcementText'];
 				header("location:updateClassAnnouncement.php");
 			}
@@ -46,12 +49,14 @@
 			
 			foreach($announcements as $announcement): 
 				if($announcement['AnnouncementId'] == $announcementId){
+					$announcementDescription = $announcement['Description'];
 					$announcementText = $announcement['Text'];
 					break;
 				}
 			endforeach;
 		}
 		else{
+			$announcementId = -1;
 			$announcementId = -1;
 			$announcementText = "";
 		}
@@ -85,11 +90,14 @@
 				<label for = "announcementList">Select list (select one):</label>
 					<select class = "form-control" id = "announcementList" onchange = "SetAnnouncementIdAndPost(this.value)">
 						<?php foreach($announcements as $announcement): ?>
-							<option value = <?php echo $announcement['AnnouncementId'] ?> <?php if($announcement['AnnouncementId'] == $announcementId){echo "selected";}?>><?php echo $announcement['Text']; ?></option> 
+							<option value = <?php echo $announcement['AnnouncementId'] ?> <?php if($announcement['AnnouncementId'] == $announcementId){echo "selected";}?>><?php echo $announcement['Description']; ?></option> 
 						<?php endforeach;?>
 					</select>
 			</div>
 			<div class = "form-group">
+				<label for = "announcementDescription">Description:</label>
+				<textarea class = "form-control" form = "selectAnnouncementForm" style = "resize:none" maxLength = 20 rows = 1 cols = 20 id = "announcementDescription" name = "announcementDescription" required><?php echo $announcementDescription; ?></textarea>
+				<br>
 				<label for = "announcementText">Text:</label>
 				<textarea class = "form-control" form = "selectAnnouncementForm" style = "resize:none" maxLength = 500 rows = 7 cols = 80 id = "announcementText" name = "announcementText" required><?php echo $announcementText; ?></textarea>
 			</div>
@@ -105,9 +113,9 @@
 		</div>
 		<div style = "float:right">
 		<h3>Manage:</h3>
-			<ul style = "list-style-type: noone">
-				<li><a class = "btn" href = "manageClass.php" type = "button">cancel</a></li>
-				<li><a class = "btn" href = "logout.php" type = "button">logout</a></li>
+			<ul style = "list-style-type: none">
+				<li><a href = "manageClass.php" class = "btn btn-default">back</a></li>
+				<li><a href = "logout.php" class = "btn btn-default">logout</a></li>
 			</ul>
 		</div>
     </div> <!-- /container -->
