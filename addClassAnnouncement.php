@@ -1,8 +1,5 @@
 <?php
    include('database php/session.php');
-   if($_SESSION['class_id'] == " "){
-	   $error = "you muse specify a class id.";
-   }
    if($_SESSION['announcement_description'] == ""){
 	   $error = "You must specify a announcement description.";
    }
@@ -11,13 +8,13 @@
    }
    else{
 		// Doing this to prevent sql hacking.
-		$classId = mysqli_real_escape_string($db,$_SESSION['class_id'])
+		$classId = $_SESSION['class_id'];
 		$announcementDescription = mysqli_real_escape_string($db,$_SESSION['announcement_description']);
 		$annoucmentText = mysqli_real_escape_string($db,$_SESSION['announcement_text']);
 		
 		try
 		{
-			$sql = "INSERT INTO Announcement (ClassId, Description, Text, ExpirationDate, CreateDate, DeleteDate) VALUES ($classId, '$announcementDescription', '$annoucmentText', '2019-6-30', CURDATE(), NULL)";
+			$sql = "INSERT INTO Announcement (ClassId, Description, Text, ExpirationDate, CreateDate, DeleteDate) VALUES ('$classId', '$announcementDescription', '$annoucmentText', '2019-6-30', CURDATE(), NULL)";
 			mysqli_query($db,$sql);
 			
 			header("location: manageClassAnnouncement.php");

@@ -6,7 +6,6 @@
 		if(isset($_POST['operation'])){
 			$operation = $_POST['operation'];
 			if($operation == 'add'){
-				$_SESSION['class_id'] = 
 				$_SESSION['announcement_description'] = $_POST['announcementDescription'];
 				$_SESSION['announcement_text'] = $_POST['announcementText'];
 				header("location:addClassAnnouncement.php");
@@ -57,7 +56,7 @@
 		}
 		else{
 			$announcementId = -1;
-			$announcementId = -1;
+			$announcementDescription = "";
 			$announcementText = "";
 		}
 	}
