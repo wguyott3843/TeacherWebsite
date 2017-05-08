@@ -11,11 +11,11 @@
 		// Doing this to prevent sql hacking.
 		$announcementDescription = mysqli_real_escape_string($db,$_SESSION['announcement_description']);
 		$announcementText = mysqli_real_escape_string($db,$_SESSION['announcement_text']);
-		$classId = $_SESSION['announcement_id'];
+		$announcementId = $_SESSION['announcement_id'];
 		
 		try
 		{
-			$sql = "UPDATE Announcement SET Description = '$announcementDescription', Text = '$announcementText'";
+			$sql = "UPDATE Announcement SET Description = '$announcementDescription', Text = '$announcementText' WHERE Id = '$announcementId'";
 			mysqli_query($db,$sql);
 			
 			header("location: manageGlobalAnnouncement.php");
